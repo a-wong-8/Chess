@@ -4,7 +4,6 @@ class Board
     def initialize
         @board = Array.new(8) {Array.new(8)}
        fill_board(@board)
-        # print(@board)
     end
 
     def [](position)
@@ -45,7 +44,9 @@ class Board
         end
     end
 
-    def print_board
+    def add_pieces
+
+        dup_board = @board.dup
 
         color_hash = {:white => "w",
         :black => "b"
@@ -59,19 +60,25 @@ class Board
         :pawn => "P",
         :null_piece => " "
         }
-        # @board.each do |row|
-        #     row.each do |spot|
+       
         (0..7).each do |x|
             (0..7).each do |y|
-                @board[x][y] = piece_hash[@board[x][y].type_piece] 
+                dup_board[x][y] = piece_hash[dup_board[x][y].type_piece] 
             end
         end
+    end
+
+    def print_board
         @board.each do |row|
             puts row.join(" ")
         end
         puts 'board has been printed'
     end
+
     def move_piece(start_pos, end_pos)
+        if self[end_pos] == ' '
+        self[start_pos], self[end_pos] = self[end_pos], self[start_pos]    
+        end
 
     end
 
