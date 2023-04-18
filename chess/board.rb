@@ -4,6 +4,7 @@ class Board
     def initialize
         @board = Array.new(8) {Array.new(8)}
        fill_board(@board)
+       add_pieces
     end
 
     def [](position)
@@ -76,6 +77,7 @@ class Board
     end
 
     def move_piece(start_pos, end_pos)
+        raise 'invalid position' if !start_pos.first.between?(0,7) || !start_pos.last.between?(0,7) || !end_pos.first.between?(0,7) || !end_pos.last.between?(0,7)
         if self[end_pos] == ' '
         self[start_pos], self[end_pos] = self[end_pos], self[start_pos]    
         end
