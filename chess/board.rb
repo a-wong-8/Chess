@@ -46,10 +46,33 @@ class Board
     end
 
     def print_board
+
+        color_hash = {:white => "w",
+        :black => "b"
+    }
+
+        piece_hash = { :rook => "R",
+        :knight => "N",
+        :bishop => "B",
+        :queen => "Q",
+        :king => "K",
+        :pawn => "P",
+        :null_piece => " "
+        }
+        # @board.each do |row|
+        #     row.each do |spot|
+        (0..7).each do |x|
+            (0..7).each do |y|
+                @board[x][y] = piece_hash[@board[x][y].type_piece] 
+            end
+        end
         @board.each do |row|
             puts row.join(" ")
         end
         puts 'board has been printed'
+    end
+    def move_piece(start_pos, end_pos)
+
     end
 
 end
