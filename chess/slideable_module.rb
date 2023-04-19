@@ -37,13 +37,24 @@ module Slidable
 
 # this helper method is only responsible for collecting all moves in a given direction
   # the given direction is represented by two args, the combination of a dx and dy
-    def grow_unblocked_moves_in_dir(dx, dy)
+    def moves_in_one_dir(dx, dy)
         collected_moves = []
-        
+        next_position = true  
         position = self.pos
         # get the piece's current row and current column
         
-        until self[0] 
+        until next_position == false 
+            position[0] += dx 
+            position[1] += dy 
+            if position[0].between(0, 7) && position[1].between(0, 7) && (position.empty?)
+                collected_moves << position
+            elsif position[0].between(0, 7) && position[1].between(0, 7) && position.color != self.color
+                collected_moves << position 
+                next_position = false 
+            else
+                next_position = false 
+            end
+        end
 
 
     # in a loop:
@@ -55,7 +66,7 @@ module Slidable
       # if the new position is occupied with a piece of the same color, stop looping
 
     # return the final moves array
-        end
+        collected_moves
     end
 
 end

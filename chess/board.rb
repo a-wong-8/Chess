@@ -18,7 +18,7 @@ class Board
     end
 
     def fill_board(board)
-        # self[[0,0]] = Piece.new(:rook, :black, [0,0])
+        # self[[0,0]] = Piece.new(:rook, :self, [0,0])
         # self[[0,1]] = Piece.new(:knight, :black, [0,1]) 
         # self[[0,2]] = Piece.new(:bishop, :black, [0,2])
         # self[[0,3]] = Piece.new(:queen, :black, [0,3])

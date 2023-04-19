@@ -9,4 +9,15 @@ class Piece
         @pos = pos
     end
 
+    def empty? 
+        if self.color == nil 
+            return true 
+        else
+            false 
+        end
+    end
+    def pos=(value)
+        pos = value
+    end
+
 end
