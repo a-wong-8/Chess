@@ -6,8 +6,12 @@ module Slidable
         diagonal_moves = [[-1, -1], [1, 1]]
     end
     
-
     private
-    def gro
+    def grow_unblocked_moves_in_dir(dx, dy)
+        final_arr = []
+        until self[0] 
+
+        end
+    end
 
 end

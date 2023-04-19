@@ -78,6 +78,7 @@ class Board
 
     def move_piece(start_pos, end_pos)
         raise 'invalid position' if !start_pos.first.between?(0,7) || !start_pos.last.between?(0,7) || !end_pos.first.between?(0,7) || !end_pos.last.between?(0,7)
+        
         if self[end_pos] == ' '
         self[start_pos], self[end_pos] = self[end_pos], self[start_pos]    
         end
