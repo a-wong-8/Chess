@@ -1,6 +1,6 @@
 require_relative "piece.rb"
 
-class Knight < Piece
+class King < Piece
     include Stepable
 
     def move_dirs
@@ -8,7 +8,7 @@ class Knight < Piece
     end
 
     def symbol
-        ♘
+        ♔
     end
 
 end
