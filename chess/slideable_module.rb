@@ -4,7 +4,7 @@ module Slidable
         [0, -1], # left
         [0, 1],  # right
         [-1, 0], # up
-        [1, 0]  # down
+        [1, 0]   # down
     ] 
 
     DIAGONAL_DIRS = [
@@ -22,7 +22,7 @@ module Slidable
         DIAGONAL_DIRS
     end
 
-    def moves 
+    def moves # list of all possible positions
         collected_moves = []
 
     end
@@ -39,8 +39,10 @@ module Slidable
   # the given direction is represented by two args, the combination of a dx and dy
     def grow_unblocked_moves_in_dir(dx, dy)
         collected_moves = []
-        position = self
+        
+        position = self.pos
         # get the piece's current row and current column
+        
         until self[0] 
 
 
