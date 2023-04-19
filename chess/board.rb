@@ -45,9 +45,33 @@ class Board
         end
     end
 
-    def add_pieces
+    # def add_pieces
 
-        dup_board = @board.dup
+    #     @dup_board = @board.map {|subarray| subarray.dup}
+
+    #     color_hash = {:white => "w",
+    #     :black => "b"
+    #     }
+
+    #     piece_hash = { :rook => "R",
+    #     :knight => "N",
+    #     :bishop => "B",
+    #     :queen => "Q",
+    #     :king => "K",
+    #     :pawn => "P",
+    #     :null_piece => " "
+    #     }
+       
+    #     (0..7).each do |x|
+    #         (0..7).each do |y|
+    #             @dup_board[x][y] = piece_hash[@dup_board[x][y].type_piece] 
+    #         end
+    #     end
+
+    # end
+
+    def print_board
+        # @dup_board = @board.map {|subarray| subarray.dup}
 
         color_hash = {:white => "w",
         :black => "b"
@@ -61,17 +85,15 @@ class Board
         :pawn => "P",
         :null_piece => " "
         }
-       
+       final_array = []
         (0..7).each do |x|
+            sub_array = []
             (0..7).each do |y|
-                dup_board[x][y] = piece_hash[dup_board[x][y].type_piece] 
+                sub_array << piece_hash[@board[x][y].type_piece] 
             end
+            final_array << sub_array
         end
-
-    end
-
-    def print_board
-        @board.each do |row|
+        final_array.each do |row|
             puts row.join(" ")
         end
         puts 'board has been printed'
@@ -80,7 +102,7 @@ class Board
     def move_piece(start_pos, end_pos)
         raise 'invalid position' if !start_pos.first.between?(0,7) || !start_pos.last.between?(0,7) || !end_pos.first.between?(0,7) || !end_pos.last.between?(0,7)
         
-        if self[end_pos] == ' '
+        if self[end_pos].type_piece == :null_piece 
         self[start_pos], self[end_pos] = self[end_pos], self[start_pos]    
         self[start_pos].pos, self[end_pos].pos = self[end_pos].pos, self[start_pos].pos
         end
