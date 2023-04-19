@@ -7,5 +7,10 @@ class Piece
         @type_piece = type_piece
     end
 
+    def moves
+        
+    end
+
+
 
 end
