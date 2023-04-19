@@ -1,5 +1,5 @@
 require_relative "piece.rb"
-
+require_relative "stepable_module.rb"
 class King < Piece
     include Stepable
 
@@ -8,7 +8,7 @@ class King < Piece
     end
 
     def symbol
-        ♔
+        "♔"
     end
 
 end

@@ -1,4 +1,5 @@
 require_relative "piece.rb"
+require_relative "slideable_module.rb"
 
 class Rook < Piece
     include Slidable
@@ -8,7 +9,7 @@ class Rook < Piece
     end
 
     def symbol
-        ♖
+        "♖"
     end
 
 end

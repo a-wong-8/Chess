@@ -10,7 +10,7 @@ class Piece
     end
 
     def empty? 
-        if self.color == nil 
+        if self.color == "none" 
             return true 
         else
             false 

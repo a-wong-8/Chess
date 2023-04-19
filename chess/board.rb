@@ -1,8 +1,9 @@
-require_relative "piece.rb"
+require_relative "pieces.rb"
 class Board
     
     def initialize
         @grid = Array.new(8) {Array.new(8)}
+        @null_piece = NullPiece.instance 
        fill_board(@grid)
     #    add_pieces
     end
@@ -40,7 +41,7 @@ class Board
         end
         (2..5).each do |x|
             (0..7).each do |y|
-                self[[x,y]] = NullPiece.new(:nill, self, [x,y])
+                self[[x,y]] = @null_piece
             end
         end
     end
@@ -103,7 +104,7 @@ class Board
     def move_piece(start_pos, end_pos)
         raise 'invalid position' if !start_pos.first.between?(0,7) || !start_pos.last.between?(0,7) || !end_pos.first.between?(0,7) || !end_pos.last.between?(0,7)
         
-        if self[end_pos].type_piece == :null_piece 
+        if self[end_pos].symbol == " " 
         self[start_pos], self[end_pos] = self[end_pos], self[start_pos]    
         self[start_pos].pos, self[end_pos].pos = self[end_pos].pos, self[start_pos].pos
         end

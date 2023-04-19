@@ -1,5 +1,5 @@
 require_relative "piece.rb"
-
+require_relative "slideable_module.rb"
 class Bishop < Piece
     include Slidable
 
@@ -8,7 +8,7 @@ class Bishop < Piece
     end
 
     def symbol
-        ♗
+        "♗"
     end
 
 end
