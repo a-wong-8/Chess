@@ -1,4 +1,5 @@
 
+
 class Piece 
     attr_reader :color, :board
     attr_accessor :pos 
@@ -17,9 +18,9 @@ class Piece
         end
     end
 
-    def pos=(value)
-        pos = value
-    end
+    # def pos=(value)
+    #     @pos = value
+    # end
 
     def to_s
 

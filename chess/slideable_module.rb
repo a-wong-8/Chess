@@ -1,3 +1,5 @@
+require "byebug"
+
 module Slidable
 
     HORIZONTAL_DIRS = [
@@ -28,7 +30,7 @@ module Slidable
     end
 
     
-    private
+    # private
     
     def move_dirs
         raise NotImplementedError # this only executes if not implemented
@@ -41,21 +43,24 @@ module Slidable
         collected_moves = []
         next_position = true  
         position = self.pos
+        row, col = position
         # get the piece's current row and current column
-        
+        debugger
         until next_position == false 
-            position[0] += dx 
-            position[1] += dy 
-            if position[0].between(0, 7) && position[1].between(0, 7) && (position.empty?)
-                collected_moves << position
-            elsif position[0].between(0, 7) && position[1].between(0, 7) && position.color != self.color
-                collected_moves << position 
+            row += dx
+            col += dy
+            new_pos = [row, col]
+            # position[0] += dx 
+            # position[1] += dy 
+            if new_pos[0].between?(0, 7) && new_pos[1].between?(0, 7) && (new_pos.empty?)
+                collected_moves << new_pos
+            elsif new_pos[0].between?(0, 7) && new_pos[1].between?(0, 7) && board[new_pos].color != self.color
+                collected_moves << new_pos 
                 next_position = false 
             else
                 next_position = false 
             end
         end
-
 
     # in a loop:
       # continually increment the piece's current row and current column to generate a new position
@@ -66,6 +71,7 @@ module Slidable
       # if the new position is occupied with a piece of the same color, stop looping
 
     # return the final moves array
+    p 'collected moves'
         collected_moves
     end
 

@@ -1,6 +1,10 @@
 require_relative "pieces.rb"
+require "byebug"
+
 class Board
     
+    attr_reader :grid
+
     def initialize
         @grid = Array.new(8) {Array.new(8)}
         @null_piece = NullPiece.instance 
@@ -86,7 +90,6 @@ class Board
         # :pawn => "P",
         # :null_piece => " "
         # }
-
        final_array = []
         (0..7).each do |x|
             sub_array = []
@@ -103,10 +106,13 @@ class Board
 
     def move_piece(start_pos, end_pos)
         raise 'invalid position' if !start_pos.first.between?(0,7) || !start_pos.last.between?(0,7) || !end_pos.first.between?(0,7) || !end_pos.last.between?(0,7)
+        # debugger
         
         if self[end_pos].symbol == " " 
         self[start_pos], self[end_pos] = self[end_pos], self[start_pos]    
-        self[start_pos].pos, self[end_pos].pos = self[end_pos].pos, self[start_pos].pos
+        self[end_pos].pos = end_pos
+        self[start_pos].pos = start_pos
+        # self[start_pos].pos, self[end_pos].pos = self[end_pos].pos, self[start_pos].pos
         end
 
     end
