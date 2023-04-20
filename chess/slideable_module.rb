@@ -47,6 +47,7 @@ module Slidable
         # get the piece's current row and current column
         debugger
         until next_position == false 
+            next_position = false 
             row += dx
             col += dy
             new_pos = [row, col]
@@ -54,10 +55,9 @@ module Slidable
             # position[1] += dy 
             if new_pos[0].between?(0, 7) && new_pos[1].between?(0, 7) && (new_pos.empty?)
                 collected_moves << new_pos
+                next_position = true 
             elsif new_pos[0].between?(0, 7) && new_pos[1].between?(0, 7) && board[new_pos].color != self.color
                 collected_moves << new_pos 
-                next_position = false 
-            else
                 next_position = false 
             end
         end
